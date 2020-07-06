@@ -3,10 +3,7 @@ package com.example.travelassistant
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.location.Criteria
-import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
+import android.location.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,6 +25,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
     private val locationPermission = Manifest.permission.ACCESS_FINE_LOCATION
     private val locationRequestCode = 10
     private lateinit var locationManager: LocationManager
+    private lateinit var geocoder: Geocoder
 
     private val locationListener = object: LocationListener
     {
@@ -45,7 +43,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
         if (location != null)
         {
             val modifiedLocation = LatLng(location.latitude, location.longitude)
-            map.addMarker(MarkerOptions().position(modifiedLocation).title("Current location"))
+            val geoLocation = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+            map.addMarker(MarkerOptions().position(modifiedLocation).title(geoLocation[0].getAddressLine(0)))
             map.moveCamera(CameraUpdateFactory.newLatLng(modifiedLocation))
         }
     }
@@ -60,6 +59,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
         mapFragment.getMapAsync(this)
 
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        geocoder = Geocoder(this)
     }
 
     override fun onMapReady(googleMap: GoogleMap)
