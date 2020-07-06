@@ -1,6 +1,7 @@
 package com.example.travelassistant
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.*
@@ -95,6 +96,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
             else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
     }
+
+    @SuppressLint("MissingPermission")
     private fun startTrackingLocation()
     {
         Log.d("TAG", "Tracking location")
@@ -103,11 +106,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
         val provider = locationManager.getBestProvider(criteria, true)
         val minTime = 1000L
         val minDistance = 10.0F
-        try
+        if (locationManager.isProviderEnabled(locationPermission))
         {
             locationManager.requestLocationUpdates(provider, minTime, minDistance, locationListener)
         }
-        catch (e: SecurityException)
+        else
         {
             Toast.makeText(this, R.string.permissionNotGranted, Toast.LENGTH_SHORT).show()
         }
