@@ -11,5 +11,5 @@ data class LocationModel(
     val latitude: Float,
     val longitude: Float,
     val description: String?,
-    val imageURL: URL?
+    val imageURL: String?
 )

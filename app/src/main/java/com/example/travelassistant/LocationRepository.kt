@@ -2,7 +2,7 @@ package com.example.travelassistant
 
 import androidx.lifecycle.LiveData
 
-class DataRepository(private val locationDao: LocationDao)
+class LocationRepository(private val locationDao: LocationDao)
 {
     val locations: LiveData<List<LocationModel>> = locationDao.getAll()
 
