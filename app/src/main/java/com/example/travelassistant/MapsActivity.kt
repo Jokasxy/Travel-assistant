@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.*
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import java.lang.Exception
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback
 {
@@ -97,6 +99,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
         }
     }
 
+
     @SuppressLint("MissingPermission")
     private fun startTrackingLocation()
     {
@@ -106,13 +109,28 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
         val provider = locationManager.getBestProvider(criteria, true)
         val minTime = 1000L
         val minDistance = 10.0F
-        if (locationManager.isProviderEnabled(locationPermission))
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
         {
-            locationManager.requestLocationUpdates(provider, minTime, minDistance, locationListener)
+            if (locationManager.isLocationEnabled)
+            {
+                locationManager.requestLocationUpdates(provider, minTime, minDistance, locationListener)
+            }
+            else
+            {
+                Toast.makeText(this, R.string.locationDisabled, Toast.LENGTH_SHORT).show()
+            }
         }
         else
         {
-            Toast.makeText(this, R.string.permissionNotGranted, Toast.LENGTH_SHORT).show()
+            try
+            {
+                locationManager.requestLocationUpdates(provider, minTime, minDistance, locationListener)
+            }
+            catch (e: Exception)
+            {
+                Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
