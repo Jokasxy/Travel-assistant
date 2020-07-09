@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.rma5_maps.hasPermissionCompat
 import com.example.rma5_maps.requestPermissionCompat
 
@@ -29,6 +31,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
     private val locationRequestCode = 10
     private lateinit var locationManager: LocationManager
     private lateinit var geocoder: Geocoder
+    private lateinit var locationViewModel: LocationViewModel
 
     private val locationListener = object: LocationListener
     {
@@ -64,6 +67,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
         geocoder = Geocoder(this)
+
+        locationViewModel = ViewModelProvider(this).get(LocationViewModel::class.java)
     }
 
     override fun onMapReady(googleMap: GoogleMap)

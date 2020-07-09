@@ -13,4 +13,7 @@ interface LocationDao
 
     @Insert
     fun insertAll(locationModels: List<LocationModel>)
+
+    @Query("DELETE FROM location")
+    fun deleteAll()
 }
