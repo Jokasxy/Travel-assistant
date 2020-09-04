@@ -1,4 +1,4 @@
-package com.example.rma5_maps
+package com.example.travelassistant.utils
 
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity

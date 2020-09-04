@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Travel assistant</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_location">Location</string>
 
     <string name="permissionNotGranted">Location permission not granted.</string>
     <string name="locationDisabled">Your location is disabled.</string>
