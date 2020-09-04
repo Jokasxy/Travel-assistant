@@ -2,13 +2,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".LocationActivity"
+    tools:context=".views.LocationActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layoutMargin">
+        android:padding="@dimen/layoutPadding">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,25 +18,43 @@
             android:textAlignment="center"
             android:textStyle="bold"
             android:textSize="@dimen/nameFontSize"
-            android:padding="@dimen/layoutPadding"/>
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="@dimen/layoutViewPadding"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/name"
             android:id="@+id/country"
             android:textSize="@dimen/layoutFontSize"
-            android:padding="@dimen/layoutPadding"/>
-        <ImageView
+            android:textColor="@color/colorPrimary"
+            android:padding="@dimen/layoutViewPadding"/>
+        <androidx.viewpager.widget.ViewPager
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/viewPagerHeight"
             app:layout_constraintTop_toBottomOf="@id/country"
-            android:id="@+id/images" />
+            android:id="@+id/viewPager" />
+        <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+            android:id="@+id/dots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/viewPager"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:dotsColor="@color/colorAccent"
+            app:dotsStrokeColor="@color/colorPrimary"
+            app:dotsCornerRadius="@dimen/dotsCornerRadius"
+            app:dotsSize="@dimen/dotsSize"
+            app:dotsSpacing="@dimen/dotsSpacing"
+            app:dotsStrokeWidth="@dimen/dotsStrokeWidth"
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/images"
+            app:layout_constraintTop_toBottomOf="@id/dots"
             android:id="@+id/description"
             android:textSize="@dimen/layoutFontSize"
-            android:padding="@dimen/layoutPadding"/>
+            android:textColor="@color/colorPrimary"
+            android:padding="@dimen/layoutViewPadding"
+            android:layout_marginTop="@dimen/descriptionMarginTop"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

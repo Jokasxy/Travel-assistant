@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="layoutMargin">16dp</dimen>
-    <dimen name="layoutPadding">8dp</dimen>
+    <dimen name="layoutPadding">16dp</dimen>
+    <dimen name="layoutViewPadding">8dp</dimen>
+    <dimen name="viewPagerHeight">400dp</dimen>
+    <dimen name="descriptionMarginTop">16dp</dimen>
 
     <dimen name="nameFontSize">36sp</dimen>
     <dimen name="layoutFontSize">20sp</dimen>
+
+    <dimen name="dotsCornerRadius">8dp</dimen>
+    <dimen name="dotsSize">16dp</dimen>
+    <dimen name="dotsSpacing">4dp</dimen>
+    <dimen name="dotsStrokeWidth">2dp</dimen>
 </resources>

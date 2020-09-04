@@ -7,5 +7,5 @@ data class LocationModel (
     val country: String?,
     val position: LatLng?,
     val description: String?,
-    val imageURL: String?
+    val imageURLs: List<String>?
 )

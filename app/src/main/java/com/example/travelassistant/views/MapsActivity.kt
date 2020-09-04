@@ -1,4 +1,4 @@
-package com.example.travelassistant
+package com.example.travelassistant.views
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.example.travelassistant.R
 import com.example.travelassistant.utils.hasPermissionCompat
 import com.example.travelassistant.utils.requestPermissionCompat
 import com.example.travelassistant.models.LocationModel
@@ -143,7 +144,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
                         document.getString("country"),
                         position?.latitude?.let { LatLng(it, position.longitude) },
                         document.getString("description"),
-                        document.getString("imageURL")
+                        document.data.getValue("imageURL") as List<String>?
                     )
                     locations.add(location)
                     val marker = map.addMarker(location.position?.let { MarkerOptions().position(it).title(location.name).snippet(location.country) })

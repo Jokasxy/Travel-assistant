@@ -24,7 +24,7 @@
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <activity
-            android:name=".MapsActivity"
+            android:name=".views.MapsActivity"
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,17 +34,17 @@
         </activity>
 
         <activity
-            android:name=".LocationActivity"
+            android:name=".views.LocationActivity"
             android:label="@string/title_activity_location">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.INFO" />
             </intent-filter>
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MapsActivity" />
+                android:value=".views.MapsActivity" />
         </activity>
 
         <meta-data
