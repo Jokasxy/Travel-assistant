@@ -144,7 +144,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
                         document.getString("country"),
                         position?.latitude?.let { LatLng(it, position.longitude) },
                         document.getString("description"),
-                        document.data.getValue("imageURL") as List<String>?
+                        document.data.getValue("imageURLs") as List<String>?
                     )
                     locations.add(location)
                     val marker = map.addMarker(location.position?.let { MarkerOptions().position(it).title(location.name).snippet(location.country) })

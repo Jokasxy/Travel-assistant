@@ -1,4 +1,4 @@
-package com.example.travelassistant.models
+package com.example.travelassistant.views
 
 import android.os.Bundle
 import android.view.LayoutInflater

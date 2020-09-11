@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.travelassistant.R
 import com.example.travelassistant.models.LocationModel
-import com.example.travelassistant.models.ImageFragment
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_location.*
 
