@@ -10,6 +10,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.example.travelassistant.R
 import com.example.travelassistant.utils.hasPermissionCompat
@@ -169,5 +171,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
             putExtra("location", Gson().toJson(marker.tag))
         }
         startActivity(intent)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.action_favorite -> {
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
     }
 }

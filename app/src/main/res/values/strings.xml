@@ -4,6 +4,8 @@
     <string name="title_activity_location">Location</string>
     <string name="title_activity_list">List</string>
 
+    <string name="favorite">Favorite</string>
+
     <string name="permissionNotGranted">Location permission not granted.</string>
     <string name="locationDisabled">Your location is disabled.</string>
 </resources>
