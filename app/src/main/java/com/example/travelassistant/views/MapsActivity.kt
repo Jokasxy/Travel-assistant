@@ -27,6 +27,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_maps.*
 import java.lang.Exception
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
@@ -79,6 +80,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
 
         setLocations()
         map.setOnInfoWindowLongClickListener(this)
+
+        fab.setOnClickListener {
+            val intent = Intent(this, ListActivity::class.java).apply {
+                putExtra("locations", Gson().toJson(locations))
+            }
+            startActivity(intent)
+        }
     }
 
     private fun trackLocation() {

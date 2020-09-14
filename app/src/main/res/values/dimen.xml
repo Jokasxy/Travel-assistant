@@ -12,4 +12,6 @@
     <dimen name="dotsSize">16dp</dimen>
     <dimen name="dotsSpacing">4dp</dimen>
     <dimen name="dotsStrokeWidth">2dp</dimen>
+
+    <dimen name="fabMargin">16dp</dimen>
 </resources>
