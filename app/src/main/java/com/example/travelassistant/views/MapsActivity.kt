@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.*
 import android.os.Build
@@ -26,11 +27,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.common.reflect.TypeToken
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_maps.*
 import java.lang.Exception
+import java.lang.reflect.Type
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
     GoogleMap.OnInfoWindowLongClickListener {
@@ -42,6 +45,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
     private lateinit var geocoder: Geocoder
     private val db = Firebase.firestore
     private val locations: MutableList<LocationModel> = mutableListOf()
+    private lateinit var sharedPreferences: SharedPreferences
 
     private val locationListener = object: LocationListener {
         override fun onProviderEnabled(provider: String?) { }
@@ -74,6 +78,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
         geocoder = Geocoder(this)
+
+        sharedPreferences = getSharedPreferences(getString(R.string.favorite_locations), Context.MODE_PRIVATE)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -180,6 +186,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.action_favorite -> {
+            val locationsType: Type = object : TypeToken<MutableList<LocationModel>>() {}.getType()
+            val favoriteLocations: MutableList<LocationModel> =
+                Gson().fromJson(sharedPreferences.getString(getString(R.string.favorite_locations), String()), locationsType)
+            val intent = Intent(this, ListActivity::class.java).apply {
+                putExtra("locations", Gson().toJson(favoriteLocations))
+            }
+            startActivity(intent)
             true
         }
         else -> {

@@ -12,6 +12,7 @@ import com.example.travelassistant.R
 import com.example.travelassistant.models.LocationModel
 import com.example.travelassistant.views.LocationActivity
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_list.view.*
 import kotlinx.android.synthetic.main.layout_list_item.view.*
 
 class LocationsListAdapter(private val locations: MutableList<LocationModel>) : RecyclerView.Adapter<LocationsListAdapter.ViewHolder>() {

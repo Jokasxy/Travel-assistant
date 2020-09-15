@@ -14,4 +14,6 @@
     <dimen name="dotsStrokeWidth">2dp</dimen>
 
     <dimen name="fabMargin">16dp</dimen>
+
+    <dimen name="favoriteButtonMargin">50dp</dimen>
 </resources>

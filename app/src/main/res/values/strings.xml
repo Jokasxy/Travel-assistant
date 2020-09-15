@@ -5,6 +5,10 @@
     <string name="title_activity_list">List</string>
 
     <string name="favorite">Favorite</string>
+    <string name="favorite_locations">Favorite locations</string>
+    <string name="favorite_added">Location added to favorites</string>
+    <string name="favorite_removed">Location removed from favorites</string>
+    <string name="no_locations">No locations</string>
 
     <string name="permissionNotGranted">Location permission not granted.</string>
     <string name="locationDisabled">Your location is disabled.</string>
