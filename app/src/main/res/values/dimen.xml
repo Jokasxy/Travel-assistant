@@ -13,7 +13,8 @@
     <dimen name="dotsSpacing">4dp</dimen>
     <dimen name="dotsStrokeWidth">2dp</dimen>
 
-    <dimen name="fabMargin">16dp</dimen>
+    <dimen name="fabMarginEnd">16dp</dimen>
+    <dimen name="fabMarginBottom">64dp</dimen>
 
     <dimen name="favoriteButtonMargin">50dp</dimen>
 </resources>

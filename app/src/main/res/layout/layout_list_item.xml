@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_constraintHeight_max="300dp"
     android:id="@+id/list_item"
-    android:layout_margin="@dimen/fabMargin" >
+    android:layout_margin="@dimen/fabMarginEnd" >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

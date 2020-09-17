@@ -16,7 +16,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_margin="@dimen/fabMargin"
+        android:layout_marginEnd="@dimen/fabMarginEnd"
+        android:layout_marginBottom="@dimen/fabMarginBottom"
         android:src="@drawable/ic_list"
         android:backgroundTint="@color/colorPrimary"/>
 </FrameLayout>
